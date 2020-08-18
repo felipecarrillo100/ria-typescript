@@ -1,3 +1,6 @@
+## Description
+As the name says,  this npm/webpack project provides all the basic setup for a React/Typescript Project
+
 ## How to install:
 Clone it from Github
 
