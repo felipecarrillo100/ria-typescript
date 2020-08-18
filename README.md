@@ -12,6 +12,9 @@ Intall all the project dependencies with npm
 npm install
 ```
 
+### Copy your LuciadRIA License
+Copy a valid LuciadRIA license to "licenses/luciadria_development.txt"
+
 ## To use
 ### Start development
 ```
