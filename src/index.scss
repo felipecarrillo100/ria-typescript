@@ -1,3 +1,22 @@
+/* Import the Luciad FONTS, provides icons required byt the Layer Control */
+@import '~riux/lib/fonts/luciad/font/style.css';
+
+/* Import the variabled for the theme */
+@import "~riux/lib/styles/variables";
+
+@import '~bootstrap/scss/bootstrap';
+
+
+/* Modify the theme variables to match your prefered colors */
+// @import "./theme/variables";
+/* Import the RIUX styling */
+@import "~riux/lib/styles/riux";
+
+
+.Desktop-class {
+  top: 56px;
+}
+
 body { margin:0; } /* Remove body margins */
 
 html, body {

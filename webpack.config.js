@@ -117,7 +117,7 @@ module.exports = (env, argv) => {
             }),
         ],
         devServer: {
-            port: 3000,
+            port: 3001,
             overlay: {
                 warnings: false,
                 errors: true

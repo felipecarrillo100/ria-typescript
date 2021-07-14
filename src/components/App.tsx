@@ -1,19 +1,61 @@
-import React from 'react';
+import React from "react";
 
-import "./App.scss"
+import Workspace from "riux/lib/components/luciad/workspace/Workspace";
+import GlobalContextMenu from "riux/lib/components/customcontextmenu/GlobalContextMenu";
+import {ScreenMessageContainer} from "riux/lib/components/screenmessage/ScreenMessage";
+import Desktop from "riux/lib/components/desktop/Desktop";
+import {connect, DispatchProp} from "react-redux";
+import {setContextMenu} from "riux/lib/reduxboilerplate/contextMenu/actions";
+import {Actions} from "riux/lib/reduxboilerplate/actions";
+import AppNavbar from "./bootstrap/navbar/AppNavbar";
+import BootstrapForms from "./bootstrap/forms/BootstrapForms";
 
-import react_icon from "../assets/images/tenor.gif";
-import LuciadMap from "./luciadmap/LuciadMap";
+interface DispatchProps {
+    setContextMenu: (contextMenu: GlobalContextMenu) => void;
+}
 
-class App extends React.Component<any> {
+type Props = DispatchProps;
+
+class App extends React.Component<Props>{
+    private contextMenuRef: any;
+
+    constructor(props:Props) {
+        super(props);
+        BootstrapForms.RegisterForms();
+    }
+
+    componentDidMount() {
+        if (this.contextMenuRef) {
+            this.props.setContextMenu(this.contextMenuRef);
+        }
+    }
 
     render() {
         return (
             <div className="App">
-                <LuciadMap />
+                <Desktop>
+                    <Workspace />
+                </Desktop>
+                <AppNavbar />
+                <GlobalContextMenu ref={(ref: any) => (this.contextMenuRef = ref)} />
+                <ScreenMessageContainer />
             </div>
         );
     }
 }
 
-export default App;
+function mapStateToProps(state: unknown): unknown {
+    return {};
+}
+
+function mapDispatchToProps(dispatch: React.Dispatch<Actions>): DispatchProps {
+    return {
+        setContextMenu: (contextMenu) => dispatch(setContextMenu(contextMenu)),
+    };
+}
+
+export default connect<unknown, DispatchProps>(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);
+
